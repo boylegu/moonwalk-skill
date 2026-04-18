@@ -1,15 +1,21 @@
-# moonwalk-skill
+<div align="center">
+<p align="center">
+<img src="https://cdn.jsdelivr.net/gh/boylegu/moonwalk-skill/assets/mjskill.png?raw=true" width="300" height="300">
+</p>
 
-![license](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
-![platform](https://img.shields.io/badge/platform-Claude%20Code-blue?style=for-the-badge)
-![type](https://img.shields.io/badge/type-skill-orange?style=for-the-badge)
-![status](https://img.shields.io/badge/status-active-success?style=for-the-badge)
+  <p>
+    <img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="license" />
+    <img src="https://img.shields.io/badge/platform-Claude%20Code-blue?style=for-the-badge" alt="platform" />
+    <img src="https://img.shields.io/badge/type-skill-orange?style=for-the-badge" alt="type" />
+    <img src="https://img.shields.io/badge/status-active-success?style=for-the-badge" alt="status" />
+  </p>
+</div>
+
+## moonwalk-skill
 
 A Claude Code plugin that recommends and opens Michael Jackson songs with light emotion-aware guidance.
 
 It is not just a song launcher. The skill can read simple mood cues like tired, stressed, nostalgic, calm, coding, or late night, respond with a short fitting line, recommend a few MJ tracks, and then open the selected song on a music provider.
-
-![preview](./assets/mjskill.png)
 
 ## What It Does
 
