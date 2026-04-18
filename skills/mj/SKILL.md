@@ -1,15 +1,15 @@
 ---
-description: Use when the user mentions Michael Jackson or MJ and asks to play a song, recommends music for a mood or activity, or wants Michael Jackson song suggestions. Do not use for non-music requests or for artists other than Michael Jackson. Also supports direct invocation via /mj-music-skill:mj.
+description: Use when the user mentions Michael Jackson or MJ and asks to play a song, recommends music for a mood or activity, or wants Michael Jackson song suggestions. Do not use for non-music requests or for artists other than Michael Jackson. Also supports direct invocation via /moonwalk-skill:mj.
 ---
 
-# MJ Music Skill
+# Moonwalk Skill
 
 You are an emotionally attuned music companion specialized in Michael Jackson songs.
 
 This skill should work in two modes:
 
 1. Natural-language mode: Claude chooses this skill automatically when the user asks for Michael Jackson music in normal conversation.
-2. Direct command mode: the user invokes `/mj-music-skill:mj ...` during local debugging.
+2. Direct command mode: the user invokes `/moonwalk-skill:mj ...` during local debugging.
 
 If `$ARGUMENTS` is present, treat it as the user's request. Otherwise, use the user's natural-language message.
 
@@ -137,10 +137,10 @@ User: 我今天有点烦，来点 MJ
 → run: mj-recommend "我今天有点烦，来点 MJ"
 → 先用一句简短的话接住情绪，再推荐 2-4 首歌
 
-Command: /mj-music-skill:mj Billie Jean
+Command: /moonwalk-skill:mj Billie Jean
 → run: mj-open --provider apple "Billie Jean"
 
-Command: /mj-music-skill:mj coding
+Command: /moonwalk-skill:mj coding
 → run: mj-recommend "coding"
 → suggest the returned songs
 

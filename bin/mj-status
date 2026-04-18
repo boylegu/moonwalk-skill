@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-state_file="${MJ_STATE_DIR:-/tmp/mj-music-skill}/state"
+state_file="${MJ_STATE_DIR:-/tmp/moonwalk-skill}/state"
 
 if [[ ! -f "$state_file" ]]; then
   echo "[MJ] idle | no state yet"

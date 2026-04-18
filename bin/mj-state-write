@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-state_dir="${MJ_STATE_DIR:-/tmp/mj-music-skill}"
+state_dir="${MJ_STATE_DIR:-/tmp/moonwalk-skill}"
 mkdir -p "$state_dir"
 
 state_file="$state_dir/state"

@@ -56,9 +56,9 @@ This is the default and recommended mode. Claude should auto-trigger the skill w
 Use this mainly for debugging or forcing the skill to run:
 
 ```text
-/mj-music-skill:mj Billie Jean
-/mj-music-skill:mj coding
-/mj-music-skill:mj 我今天有点烦，来点 MJ
+/moonwalk-skill:mj Billie Jean
+/moonwalk-skill:mj coding
+/moonwalk-skill:mj 我今天有点烦，来点 MJ
 ```
 
 ## Emotion and Recommendation Behavior
@@ -195,12 +195,12 @@ Then reload plugins inside Claude Code:
 /reload-plugins
 ```
 
-You can use `/help` to confirm the skill is available as `/mj-music-skill:mj`.
+You can use `/help` to confirm the skill is available as `/moonwalk-skill:mj`.
 
 ## Project Structure
 
 ```text
-mj-music-skill/
+moonwalk-skill/
 ├── .claude-plugin/
 │   └── plugin.json
 ├── assets/
