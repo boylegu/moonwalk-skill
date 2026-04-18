@@ -1,0 +1,172 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "$0")/.." && pwd)"
+songs_file="$repo_root/data/songs.json"
+query="$(printf '%s' "$*" | tr '[:upper:]' '[:lower:]')"
+script_dir="$(cd "$(dirname "$0")" && pwd)"
+
+declare -a requested_tags=()
+
+add_tags() {
+  requested_tags+=("$@")
+}
+
+case "$query" in
+  *coding*|*focus*|*写代码*|*编程*|*工作*|*专注*)
+    add_tags coding focus groove energetic
+    ;;
+esac
+
+case "$query" in
+  *tired*|*drained*|*exhausted*|*累*|*疲惫*|*没劲*)
+    add_tags comfort calm soft melodic
+    ;;
+esac
+
+case "$query" in
+  *sad*|*down*|*upset*|*blue*|*难过*|*伤心*|*低落*)
+    add_tags comfort healing calm lonely
+    ;;
+esac
+
+case "$query" in
+  *lonely*|*alone*|*一个人*|*孤独*|*寂寞*)
+    add_tags lonely comfort night calm
+    ;;
+esac
+
+case "$query" in
+  *anxious*|*stress*|*stressed*|*烦*|*焦虑*|*压力*|*紧张*)
+    add_tags calm comfort soft melodic
+    ;;
+esac
+
+case "$query" in
+  *nostalgic*|*memory*|*miss*|*怀旧*|*想起以前*|*回忆*)
+    add_tags nostalgic night melodic comfort
+    ;;
+esac
+
+case "$query" in
+  *healing*|*comfort*|*warm*|*治愈*|*安慰*|*被治愈*|*温柔一点*)
+    add_tags healing comfort soft hope
+    ;;
+esac
+
+case "$query" in
+  *confident*|*power*|*badass*|*燃起来*|*想酷一点*|*自信*|*打起精神*)
+    add_tags confidence energy-boost groove release
+    ;;
+esac
+
+case "$query" in
+  *romantic*|*love*|*crush*|*喜欢的人*|*恋爱*|*暧昧*)
+    add_tags romantic melodic chill comfort
+    ;;
+esac
+
+case "$query" in
+  *hope*|*better*|*tomorrow*|*希望*|*振作*|*重新开始*)
+    add_tags hope healing uplifting inspiring
+    ;;
+esac
+
+case "$query" in
+  *angry*|*mad*|*rage*|*发泄*|*生气*|*火大*)
+    add_tags release confidence energetic dark
+    ;;
+esac
+
+case "$query" in
+  *debug*|*quiet*|*安静*|*调试*)
+    add_tags soft calm chill melodic
+    ;;
+esac
+
+case "$query" in
+  *chill*|*relax*|*relaxing*|*soft*|*calm*|*放松*|*轻松*|*治愈*)
+    add_tags chill calm soft melodic night
+    ;;
+esac
+
+case "$query" in
+  *night*|*晚上*|*夜晚*|*深夜*)
+    add_tags night calm melodic soft
+    ;;
+esac
+
+case "$query" in
+  *workout*|*energy*|*energetic*|*运动*|*健身*)
+    add_tags workout energetic groove uplifting
+    ;;
+esac
+
+case "$query" in
+  *party*|*upbeat*|*派对*|*开心*)
+    add_tags party uplifting groove classic
+    ;;
+esac
+
+if [[ ${#requested_tags[@]} -eq 0 ]]; then
+  add_tags classic groove uplifting general
+fi
+
+song_rows="$(
+  awk '
+    /"title":/ {
+      split($0, parts, "\"")
+      title = parts[4]
+    }
+    /"tags":/ {
+      line = $0
+      sub(/.*\[/, "", line)
+      sub(/\].*/, "", line)
+      gsub(/"/, "", line)
+      gsub(/, /, ",", line)
+      print title "\t" line
+    }
+  ' "$songs_file"
+)"
+
+if [[ -z "$song_rows" ]]; then
+  printf '%s\n' "Billie Jean" "Human Nature" "Rock with You"
+  exit 0
+fi
+
+tmp_scores="$(mktemp)"
+trap 'rm -f "$tmp_scores"' EXIT
+
+while IFS=$'\t' read -r title tags_csv; do
+  [[ -z "${title:-}" ]] && continue
+  score=0
+  for i in "${!requested_tags[@]}"; do
+    tag="${requested_tags[$i]}"
+    if [[ ",$tags_csv," == *",$tag,"* ]]; then
+      weight=$((8 - i))
+      if (( weight < 1 )); then
+        weight=1
+      fi
+      score=$((score + weight))
+    fi
+  done
+  if (( score > 0 )); then
+    checksum="$(printf '%s' "${MJ_RECOMMEND_SEED:-$query}|$title" | cksum | awk '{print $1}')"
+    printf '%s\t%s\t%s\n' "$score" "$checksum" "$title" >>"$tmp_scores"
+  fi
+done <<<"$song_rows"
+
+if [[ ! -s "$tmp_scores" ]]; then
+  recommendations="$(printf '%s\n' "Billie Jean" "Human Nature" "Rock with You")"
+else
+  recommendations="$(sort -t $'\t' -k1,1nr -k2,2n -k3,3 "$tmp_scores" | cut -f3 | head -n 4)"
+fi
+
+printf '%s\n' "$recommendations"
+
+if [[ -x "$script_dir/mj-state-write" ]]; then
+  top_pick="$(printf '%s\n' "$recommendations" | head -n 1)"
+  compact_list="$(printf '%s\n' "$recommendations" | paste -sd ', ' -)"
+  "$script_dir/mj-state-write" recommend auto "$query" "$top_pick" "$compact_list" >/dev/null 2>&1 || true
+fi

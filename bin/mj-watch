@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+interval="${1:-1}"
+script_dir="$(cd "$(dirname "$0")" && pwd)"
+
+while true; do
+  clear
+  "$script_dir/mj-status"
+  sleep "$interval"
+done

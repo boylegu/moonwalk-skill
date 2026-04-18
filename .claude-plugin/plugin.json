@@ -1,0 +1,33 @@
+{
+  "name": "mj-music-skill",
+  "version": "0.1.0",
+  "description": "Michael Jackson mood companion and play-entry skill",
+  "author": {
+    "name": "Boyle Gu"
+  },
+  "license": "MIT",
+  "keywords": [
+    "music",
+    "michael-jackson",
+    "entertainment",
+    "recommendation",
+    "skill"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "MJ Music Skill",
+    "shortDescription": "Read the mood, recommend the right Michael Jackson song, and open it fast",
+    "longDescription": "Use MJ Music Skill as a Michael Jackson mood companion: it reads how you feel, responds with a brief emotionally aware line, recommends songs for that moment, and opens the selected track with local playback helpers.",
+    "developerName": "Boyle Gu",
+    "category": "Lifestyle",
+    "capabilities": [
+      "Interactive",
+      "Read"
+    ],
+    "defaultPrompt": "I'm tired. Give me the right Michael Jackson song for this mood, or open a specific MJ track.",
+    "brandColor": "#111111",
+    "composerIcon": "./assets/mj-small.svg",
+    "logo": "./assets/mj-logo.svg",
+    "screenshots": []
+  }
+}

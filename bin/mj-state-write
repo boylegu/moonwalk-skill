@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+state_dir="${MJ_STATE_DIR:-/tmp/mj-music-skill}"
+mkdir -p "$state_dir"
+
+state_file="$state_dir/state"
+
+mode="${1:-}"
+provider="${2:-}"
+query="${3:-}"
+track="${4:-}"
+details="${5:-}"
+
+timestamp="$(date '+%Y-%m-%d %H:%M:%S %z')"
+
+cat >"$state_file" <<EOF
+mode=$mode
+provider=$provider
+query=$query
+track=$track
+details=$details
+updated_at=$timestamp
+EOF

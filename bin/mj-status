@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+state_file="${MJ_STATE_DIR:-/tmp/mj-music-skill}/state"
+
+if [[ ! -f "$state_file" ]]; then
+  echo "[MJ] idle | no state yet"
+  exit 0
+fi
+
+mode=""
+provider=""
+query=""
+track=""
+details=""
+updated_at=""
+
+while IFS='=' read -r key value; do
+  case "$key" in
+    mode) mode="$value" ;;
+    provider) provider="$value" ;;
+    query) query="$value" ;;
+    track) track="$value" ;;
+    details) details="$value" ;;
+    updated_at) updated_at="$value" ;;
+  esac
+done <"$state_file"
+
+if [[ "$mode" == "recommend" ]]; then
+  echo "[MJ] recommend | ${query:-general} | ${details:-$track} | $updated_at"
+elif [[ "$mode" == "open" ]]; then
+  echo "[MJ] open | ${provider:-unknown} | ${track:-$query} | $updated_at"
+else
+  echo "[MJ] ${mode:-idle} | ${provider:-unknown} | ${track:-$query} | $updated_at"
+fi
