@@ -19,6 +19,12 @@ Moonwalk Skill 是一个面向 Claude Code 的定向音乐插件，聚焦 Michae
 
 这是一款独立的粉丝插件项目，与 Michael Jackson 遗产管理方或任何官方权利人无隶属、认可、赞助或授权关系。
 
+## Launch Video Made with HyperFrames
+
+[![Moonwalk Skill 演示](./assets/moonwalk-demo.gif)](https://vimeo.com/1184540755?fl=ip&fe=ec)
+
+点击查看 Vimeo 完整演示以及我所创作的《code with rhythm》音乐：[`vimeo.com/1184540755`](https://vimeo.com/1184540755?fl=ip&fe=ec)
+
 ## 它能做什么
 
 - 根据情绪、场景或活动推荐 2-4 首歌
