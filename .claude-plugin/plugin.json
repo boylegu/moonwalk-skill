@@ -1,33 +1,37 @@
 {
   "name": "moonwalk-skill",
-  "version": "0.1.0",
-  "description": "Michael Jackson mood companion and play-entry skill",
+  "version": "1.0.0",
+  "description": "Claude Code plugin for Michael Jackson mood-based recommendations and quick song opening",
   "author": {
     "name": "Boyle Gu"
   },
+  "homepage": "https://github.com/boylegu/moonwalk-skill",
+  "repository": "https://github.com/boylegu/moonwalk-skill",
   "license": "MIT",
   "keywords": [
     "music",
     "michael-jackson",
     "entertainment",
     "recommendation",
-    "skill"
+    "plugin",
+    "claude-code",
+    "playback"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Moonwalk Skill",
-    "shortDescription": "Read the mood, recommend the right Michael Jackson song, and open it fast",
-    "longDescription": "Use Moonwalk Skill as a Michael Jackson mood companion: it reads how you feel, responds with a brief emotionally aware line, recommends songs for that moment, and opens the selected track with local playback helpers.",
+    "shortDescription": "Recommend the right Michael Jackson song for the moment and open it fast",
+    "longDescription": "Moonwalk Skill is a Claude Code plugin for Michael Jackson music discovery. It reads simple mood cues, recommends 2-4 fitting MJ songs, adds a brief emotionally aware line when useful, and opens the selected track through supported music providers.",
     "developerName": "Boyle Gu",
-    "category": "Lifestyle",
+    "category": "Music",
     "capabilities": [
       "Interactive",
       "Read"
     ],
-    "defaultPrompt": "I'm tired. Give me the right Michael Jackson song for this mood, or open a specific MJ track.",
+    "defaultPrompt": "I'm tired. Recommend the right Michael Jackson song for this mood, or open a specific MJ track.",
     "brandColor": "#111111",
-    "composerIcon": "./assets/mj-small.svg",
-    "logo": "./assets/mj-logo.svg",
+    "composerIcon": "./assets/mj-marketplace-icon.svg",
+    "logo": "./assets/mj-marketplace-icon.svg",
     "screenshots": []
   }
 }

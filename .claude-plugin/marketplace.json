@@ -1,0 +1,31 @@
+{
+  "name": "mj-music",
+  "owner": {
+    "name": "Boyle Gu"
+  },
+  "metadata": {
+    "description": "Community Claude Code plugins maintained by Boyle Gu",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "moonwalk-skill",
+      "source": "./",
+      "description": "Claude Code plugin for Michael Jackson mood-based recommendations and quick song opening",
+      "version": "1.0.0",
+      "author": {
+        "name": "Boyle Gu"
+      },
+      "homepage": "https://github.com/boylegu/moonwalk-skill",
+      "repository": "https://github.com/boylegu/moonwalk-skill",
+      "license": "MIT",
+      "category": "Music",
+      "tags": [
+        "music",
+        "recommendation",
+        "playback",
+        "mj"
+      ]
+    }
+  ]
+}
