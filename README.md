@@ -91,34 +91,27 @@ Open behavior:
 
 ## Installation
 
-For local development:
-
-```bash
-claude --plugin-dir .
-```
-
-Then reload plugins inside Claude Code:
-
-```text
-/reload-plugins
-```
-
-Use `/help` to confirm the skill is available as `/moonwalk-skill:mj`.
-
-For marketplace installation from GitHub:
+To install from GitHub, first add this repository to your local marketplace sources:
 
 ```text
 /plugin marketplace add boylegu/moonwalk-skill
+```
+
+Then install the plugin:
+
+```text
 /plugin install moonwalk-skill@mj-music
 ```
 
-If the marketplace catalog changes, refresh the marketplace entry:
+`marketplace add` only registers the repository in your local Claude Code environment. Other people still need to add the same source on their side before they can install from it.
+
+If the marketplace catalog changes, refresh the local marketplace entry:
 
 ```text
 /plugin marketplace update mj-music
 ```
 
-If the plugin itself releases a new version, update the installed plugin:
+If the plugin itself releases a new version, update the installed copy:
 
 ```text
 /plugin update moonwalk-skill@mj-music

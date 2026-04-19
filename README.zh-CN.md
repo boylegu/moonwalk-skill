@@ -91,26 +91,19 @@ Moonwalk Skill 是一个面向 Claude Code 的定向音乐插件，聚焦 Michae
 
 ## 安装方式
 
-本地开发时：
-
-```bash
-claude --plugin-dir .
-```
-
-然后在 Claude Code 中重新加载插件：
-
-```text
-/reload-plugins
-```
-
-可以通过 `/help` 确认 skill 是否以 `/moonwalk-skill:mj` 的形式可用。
-
-通过 GitHub marketplace 接入时：
+如果要通过 GitHub 安装，先把这个仓库加入你本地的 marketplace 来源：
 
 ```text
 /plugin marketplace add boylegu/moonwalk-skill
+```
+
+然后再安装插件本身：
+
+```text
 /plugin install moonwalk-skill@mj-music
 ```
+
+`marketplace add` 只是在你自己的 Claude Code 环境里登记这个仓库。别人如果也要安装，仍然需要在各自环境里执行同样的 `add`。
 
 如果 marketplace 目录有更新，可以刷新本地 marketplace 条目：
 
@@ -118,7 +111,7 @@ claude --plugin-dir .
 /plugin marketplace update mj-music
 ```
 
-如果插件本身发了新版本，再更新已安装插件：
+如果插件本身发了新版本，再更新已经安装的版本：
 
 ```text
 /plugin update moonwalk-skill@mj-music
