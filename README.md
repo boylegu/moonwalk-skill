@@ -19,6 +19,12 @@ Moonwalk Skill is a Claude Code plugin focused on Michael Jackson music. It read
 
 This project is an independent fan-made plugin. It is not affiliated with, endorsed by, or sponsored by the Michael Jackson Estate or any official rights holder.
 
+## Launch Video Made with HyperFrames
+
+[![Moonwalk Skill demo](./assets/moonwalk-demo.gif)](https://vimeo.com/1184540755?fl=ip&fe=ec)
+
+Watch the full Vimeo demo along with my original track "code with rhythm": [`vimeo.com/1184540755`](https://vimeo.com/1184540755?fl=ip&fe=ec)
+
 ## What It Does
 
 - Recommends 2-4 songs based on mood, context, or activity
